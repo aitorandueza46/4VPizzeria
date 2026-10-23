@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'app-navegador',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './navegador.html',
   styleUrl: './navegador.css',
 })
-export class Navegador {}
+export class Navegador {
+  // OUTPUT: avisa al padre de lo que se escribe en el buscador
+  busqueda = output<string>();
+}

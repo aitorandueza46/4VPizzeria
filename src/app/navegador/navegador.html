@@ -30,12 +30,13 @@
             </li>
           </ul>
 
-          <form class="d-flex" role="search">
+          <form class="d-flex" role="search" (submit)="$event.preventDefault()">
             <input
               class="form-control me-2"
               type="search"
               placeholder="Buscar pizzas por ingredientes..."
               aria-label="Search"
+              (input)="busqueda.emit($any($event.target).value)"
             />
             <button class="btn btn-outline-success" type="submit">Buscar</button>
           </form>

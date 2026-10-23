@@ -13,6 +13,7 @@ import { Formulario } from './formulario/formulario';
 export class App {
   // El padre es el dueño de los datos: se los pasa a los hijos con [input]
   pizzas: PizzaModel[] = [];
+  pizzasFiltradas: PizzaModel[] = [];
 
   constructor() {
     this.pizzas = [
@@ -73,5 +74,14 @@ export class App {
         false,
       ),
     ];
+    this.pizzasFiltradas = this.pizzas;
+  }
+
+  // Recibe el texto del navbar y refresca la lista filtrada
+  filtrar(texto: string) {
+    const busqueda = texto.toLowerCase();
+    this.pizzasFiltradas = this.pizzas.filter((pizza) =>
+      pizza.ingredientes.toLowerCase().includes(busqueda),
+    );
   }
 }
