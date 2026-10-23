@@ -1,0 +1,12 @@
+
+<app-navegador></app-navegador>
+
+<div class="container text-center" id="pizzas">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
+    @for (pizza of pizzas; track pizza.nombre) {
+      <app-pizza class="col d-flex" [pizza]="pizza" />
+    }
+  </div>
+</div>
+
+<app-formulario></app-formulario>

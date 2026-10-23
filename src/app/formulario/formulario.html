@@ -1,0 +1,53 @@
+<div id="pedido" class="container border color-black bg-body-tertiary">
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Hora de entrega</label>
+          <input type="time" name="horaEntrega" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Dirección</label>
+          <input
+            type="text"
+            name="direccion"
+            class="form-control"
+            placeholder="Calle y número"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label me-3">Método de pago:</label>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="metodoPago"
+              id="bizum"
+              value="bizum"
+              checked
+            />
+            <label class="form-check-label" for="bizum">Bizum</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="metodoPago"
+              id="tarjeta"
+              value="tarjeta"
+            />
+            <label class="form-check-label" for="tarjeta">Tarjeta</label>
+          </div>
+        </div>
+
+        <div class="mb-3 is-hidden">
+          <label class="form-label">Número de teléfono</label>
+          <input type="text" name="telefono" class="form-control" placeholder="+34...." />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar pedido</button>
+      </form>
+    </div>
