@@ -1,18 +1,17 @@
 <div id="pedido" class="container border color-black bg-body-tertiary">
-      <form>
+      <form [formGroup]="pedidoForm">
         <div class="mb-3">
           <label class="form-label">Hora de entrega</label>
-          <input type="time" name="horaEntrega" class="form-control" />
+          <input type="time" formControlName="horaEntrega" class="form-control" />
         </div>
 
         <div class="mb-3">
           <label class="form-label">Dirección</label>
           <input
             type="text"
-            name="direccion"
+            formControlName="direccion"
             class="form-control"
             placeholder="Calle y número"
-            required
           />
         </div>
 
@@ -23,10 +22,9 @@
             <input
               class="form-check-input"
               type="radio"
-              name="metodoPago"
+              formControlName="metodoPago"
               id="bizum"
               value="bizum"
-              checked
             />
             <label class="form-check-label" for="bizum">Bizum</label>
           </div>
@@ -35,7 +33,7 @@
             <input
               class="form-check-input"
               type="radio"
-              name="metodoPago"
+              formControlName="metodoPago"
               id="tarjeta"
               value="tarjeta"
             />
@@ -45,7 +43,7 @@
 
         <div class="mb-3 is-hidden">
           <label class="form-label">Número de teléfono</label>
-          <input type="text" name="telefono" class="form-control" placeholder="+34...." />
+          <input type="text" formControlName="telefono" class="form-control" placeholder="+34...." />
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar pedido</button>
