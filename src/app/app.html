@@ -1,5 +1,6 @@
+
+<app-header></app-header>
 <app-navegador (busquedaNA)="busquedaApp.set($event)"></app-navegador>
 
-<app-lista-pizzas [busquedaLs]="busquedaApp()"></app-lista-pizzas>
-
-<app-formulario></app-formulario>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
