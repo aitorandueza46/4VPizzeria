@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { PizzaModel } from '../models/PizzaModel';
 
 @Component({
@@ -9,4 +9,16 @@ import { PizzaModel } from '../models/PizzaModel';
 })
 export class Pizza {
   pizza = input.required<PizzaModel>();
+
+  pizzaSolicitada = output<{ pizza: PizzaModel; cantidad: number }>();
+
+  solicitarPizza(cantidadSolicitada: string): void {
+    const cantidad = Number(cantidadSolicitada);
+
+    if (!Number.isInteger(cantidad) || cantidad < 1) {
+      return;
+    }
+
+    this.pizzaSolicitada.emit({ pizza: this.pizza(), cantidad });
+  }
 }

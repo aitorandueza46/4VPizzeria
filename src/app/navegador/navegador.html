@@ -1,45 +1,59 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <img
-            src="https://img.magnific.com/vector-gratis/pizza-rebanada-derretida-flotante-vector-dibujos-animados-icono-ilustracion-icono-objeto-comida-vector-plano-aislado_138676-10422.jpg?semt=ais_hybrid&w=740&q=80"
-            alt="Logo"
-            width="40"
-            height="32"
-            class="me-2"
-          />
-          <span>Pizzería 4v</span>
-        </a>
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img
+        src="https://img.magnific.com/vector-gratis/pizza-rebanada-derretida-flotante-vector-dibujos-animados-icono-ilustracion-icono-objeto-comida-vector-plano-aislado_138676-10422.jpg?semt=ais_hybrid&w=740&q=80"
+        alt="Logo"
+        width="40"
+        height="32"
+        class="me-2"
+      />
+      <span>Pizzería 4v</span>
+    </a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a routerLink="/ListaPizzas" routerLinkActive="active">Lista de pizzas</a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/Formulario" routerLinkActive="active">Formulario</a>
-            </li>
-          </ul>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button
+            type="button"
+            class="nav-link"
+            [class.active]="vistaActiva === 'lista'"
+            (click)="elegir('lista')"
+          >
+            Lista de pizzas
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            type="button"
+            class="nav-link"
+            [class.active]="vistaActiva === 'formulario'"
+            (click)="elegir('formulario')"
+          >
+            Formulario
+          </button>
+        </li>
+      </ul>
 
-          <form class="d-flex" role="search" (submit)="$event.preventDefault()">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Buscar pizzas por ingredientes..."
-              aria-label="Search"
-              (input)="busquedaNA.emit(($event.target ).value)"
-            />
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
-        </div>
-      </div>
-    </nav>
+      <form class="d-flex" role="search" (submit)="$event.preventDefault()">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Buscar pizzas por ingredientes..."
+          aria-label="Search"
+          (input)="busquedaNA.emit($event.target.value)"
+        />
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,6 +1,18 @@
-
 <app-header></app-header>
-<app-navegador (busquedaNA)="busquedaApp.set($event)"></app-navegador>
 
-<router-outlet></router-outlet>
+<app-navegador
+  (busquedaNA)="cambiarBusqueda($event)"
+  (vistaNA)="cambiarVista($event)"
+></app-navegador>
+
+<app-lista-pizzas
+  [hidden]="vista !== 'lista'"
+  [busquedaLs]="busquedaApp"
+  (pizzaSolicitada)="agregarPizzaAlPedido($event.pizza, $event.cantidad)"
+></app-lista-pizzas>
+
+<app-pedido #pedido [hidden]="vista !== 'formulario'" [lineasPedido]="lineasPedido"></app-pedido>
+
+<app-formulario [hidden]="vista !== 'formulario'" [totalPedido]="pedido.total()"></app-formulario>
+
 <app-footer></app-footer>

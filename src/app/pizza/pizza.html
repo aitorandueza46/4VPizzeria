@@ -3,6 +3,21 @@
   <div class="card-body d-flex flex-column">
     <h5 class="card-title">{{ pizza().nombre }} — {{ pizza().precioFormateado }}</h5>
     <p class="card-text">Ingredientes: {{ pizza().ingredientes }}.</p>
-    <a href="#pedido" class="btn btn-primary mt-auto">Pedir ahora</a>
+    <form
+      class="mt-auto"
+      (submit)="$event.preventDefault(); solicitarPizza(entradaCantidad.value)"
+    >
+      <label class="form-label" [for]="'cantidad-' + pizza().nombre">Cantidad</label>
+      <input
+        class="form-control"
+        [id]="'cantidad-' + pizza().nombre"
+        type="number"
+        min="0"
+        step="1"
+        value="0"
+        #entradaCantidad
+      />
+      <button class="btn btn-primary w-100 mt-2" type="submit">Añadir al pedido</button>
+    </form>
   </div>
 </div>

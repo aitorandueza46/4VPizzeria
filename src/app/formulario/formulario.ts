@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './formulario.css',
 })
 export class Formulario {
+  totalPedido = input(0);
+
+  
+
   pedidoForm = new FormGroup({
     horaEntrega: new FormControl(''),
     direccion: new FormControl(''),
