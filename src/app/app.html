@@ -1,6 +1,7 @@
 <app-header></app-header>
 
 <app-navegador
+  [vistaActiva]="vista"
   (busquedaNA)="cambiarBusqueda($event)"
   (vistaNA)="cambiarVista($event)"
 ></app-navegador>
@@ -13,6 +14,10 @@
 
 <app-pedido #pedido [hidden]="vista !== 'formulario'" [lineasPedido]="lineasPedido"></app-pedido>
 
-<app-formulario [hidden]="vista !== 'formulario'" [totalPedido]="pedido.total()"></app-formulario>
+<app-formulario
+  [hidden]="vista !== 'formulario'"
+  [totalPedido]="pedido.total()"
+  (pedidoEnviado)="finalizarPedido()"
+></app-formulario>
 
 <app-footer></app-footer>

@@ -1,52 +1,57 @@
-<div  class="container border color-black bg-body-tertiary">
-      <p class="fw-bold fs-5 pt-3 mb-0">Total a pagar: {{totalPedido()}}$</p>
-      <form [formGroup]="pedidoForm">
-        <div class="mb-3">
-          <label class="form-label">Hora de entrega</label>
-          <input type="time" formControlName="horaEntrega" class="form-control" />
-        </div>
+<div class="container border color-black bg-body-tertiary">
+  <p class="fw-bold fs-5 pt-3 mb-0">Total a pagar: {{ totalPedido() }}$</p>
 
-        <div class="mb-3">
-          <label class="form-label">Dirección</label>
-          <input
-            type="text"
-            formControlName="direccion"
-            class="form-control"
-            placeholder="Calle y número"
-          />
-        </div>
+  @if (totalPedido() === 0) {
+    <p class="text-danger">Añade al menos una pizza para poder pagar.</p>
+  }
 
-        <div class="mb-3">
-          <label class="form-label me-3">Método de pago:</label>
-
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              formControlName="metodoPago"
-              id="bizum"
-              value="bizum"
-            />
-            <label class="form-check-label" for="bizum">Bizum</label>
-          </div>
-
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              formControlName="metodoPago"
-              id="tarjeta"
-              value="tarjeta"
-            />
-            <label class="form-check-label" for="tarjeta">Tarjeta</label>
-          </div>
-        </div>
-
-        <div class="mb-3 is-hidden">
-          <label class="form-label">Número de teléfono</label>
-          <input type="text" formControlName="telefono" class="form-control" placeholder="+34...." />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Enviar pedido</button>
-      </form>
+  <form [formGroup]="pedidoForm" (ngSubmit)="enviarPedido()">
+    <div class="mb-3">
+      <label class="form-label">Hora de entrega</label>
+      <input type="time" formControlName="horaEntrega" class="form-control" />
+      @if (horaEntrega?.invalid && horaEntrega?.touched) {
+        <div class="text-danger small">La hora de entrega es obligatoria (formato HH:MM).</div>
+      }
     </div>
+
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input type="text" formControlName="direccion" class="form-control" placeholder="Calle, número y localidad" />
+      @if (direccion?.invalid && direccion?.touched) {
+        <div class="text-danger small">Escribe la dirección completa (mínimo 10 caracteres).</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label me-3">Método de pago:</label>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" formControlName="metodoPago" id="bizum" value="bizum" />
+        <label class="form-check-label" for="bizum">Bizum</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" formControlName="metodoPago" id="tarjeta" value="tarjeta" />
+        <label class="form-check-label" for="tarjeta">Tarjeta</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Número de tarjeta</label>
+      <input type="text" formControlName="tarjeta" class="form-control" placeholder="16 dígitos" />
+      @if (tarjeta?.invalid && tarjeta?.touched) {
+        <div class="text-danger small">La tarjeta debe tener 16 dígitos.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Número de móvil</label>
+      <input type="text" formControlName="telefono" class="form-control" placeholder="9 dígitos" />
+      @if (telefono?.invalid && telefono?.touched) {
+        <div class="text-danger small">El móvil debe tener 9 dígitos.</div>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-primary mb-3" [disabled]="totalPedido() === 0">Pagar</button>
+  </form>
+</div>

@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-navegador',
@@ -11,10 +11,5 @@ export class Navegador {
 
   vistaNA = output<string>();
 
-  vistaActiva = 'lista';
-
-  elegir(vista: string) {
-    this.vistaActiva = vista;
-    this.vistaNA.emit(vista);
-  }
+  vistaActiva = input('lista');
 }

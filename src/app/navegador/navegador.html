@@ -26,8 +26,8 @@
           <button
             type="button"
             class="nav-link"
-            [class.active]="vistaActiva === 'lista'"
-            (click)="elegir('lista')"
+            [class.active]="vistaActiva() === 'lista'"
+            (click)="vistaNA.emit('lista')"
           >
             Lista de pizzas
           </button>
@@ -36,8 +36,8 @@
           <button
             type="button"
             class="nav-link"
-            [class.active]="vistaActiva === 'formulario'"
-            (click)="elegir('formulario')"
+            [class.active]="vistaActiva() === 'formulario'"
+            (click)="vistaNA.emit('formulario')"
           >
             Formulario
           </button>

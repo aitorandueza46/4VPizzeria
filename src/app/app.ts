@@ -22,6 +22,12 @@ export class App {
 
   lineasPedido: LineaPedido[] = [];
 
+  finalizarPedido() {
+    alert('¡Gracias por tu pedido!');
+    this.lineasPedido = [];
+    this.vista = 'lista';
+  }
+
   cambiarVista(vista: string) {
     this.vista = vista;
   }
