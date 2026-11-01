@@ -1,5 +1,5 @@
-<div class="container border color-black bg-body-tertiary">
-  <p class="fw-bold fs-5 pt-3 mb-0">Total a pagar: {{ totalPedido() }}$</p>
+<div class="container my-4 px-4 bg-white rounded shadow-sm">
+  <p class="fw-bold fs-5 pt-3 text-danger">Total a pagar: {{ totalPedido() }}$</p>
 
   @if (totalPedido() === 0) {
     <p class="text-danger">Añade al menos una pizza para poder pagar.</p>
@@ -52,6 +52,6 @@
       }
     </div>
 
-    <button type="submit" class="btn btn-primary mb-3" [disabled]="totalPedido() === 0">Pagar</button>
+    <button type="submit" class="btn btn-danger w-100 mb-3" [disabled]="totalPedido() === 0">Pagar</button>
   </form>
 </div>

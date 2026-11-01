@@ -1,8 +1,8 @@
-<div class="container text-center" >
+<div class="container text-center mt-4">
   <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
     @for (pizza of pizzasFiltradas(); track pizza.nombre) {
       <app-pizza
-        class="col d-flex"
+        class="col d-flex mb-4"
         [pizza]="pizza"
         (pizzaSolicitada)="pizzaSolicitada.emit($event)"
       />
